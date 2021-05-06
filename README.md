@@ -1,15 +1,15 @@
 # ember-lifecycle-utils
 
-Installation
-------------------------------------------------------------------------------
+Utils to reduce boilerplate when working with lifecycles
+
+## Installation
 
 ```
 ember install ember-lifecycle-utils
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 ### Vanilla Classes and Destroyables
 
@@ -28,6 +28,32 @@ class Hello {
   }
 }
 ```
+
+This can be used to help make even more concise helpers, like:
+
+```js
+function useWindowEvent(context, eventName, handler) {
+  withCleanup(context, () => {
+    window.addEventListener(eventName, lick', this.handleClick);
+
+    return () => {
+      window.removeEventListener(eventName, lick', this.handleClick);
+    }
+  });
+}
+```
+
+So now the above example would be:
+
+```js
+class Hello {
+  constructor() {
+    useWindowEvent(this, 'click', this.handleClick);
+    useWindowEvent(this, 'mouseenter', this.handleClick);
+  }
+}
+```
+
 
 
 ### Modifiers
@@ -61,13 +87,11 @@ export default class Hello extends Component {
 
 
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
