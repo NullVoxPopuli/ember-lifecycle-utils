@@ -1,1 +1,1 @@
-export {eventListeners} from './-private/modifier/event-listener';
+export { eventListeners } from './-private/modifier/event-listener';

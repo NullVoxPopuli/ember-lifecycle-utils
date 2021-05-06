@@ -1,13 +1,13 @@
-import {module, test} from 'qunit';
-import {render, settled} from '@ember/test-helpers';
-import {hbs} from 'ember-cli-htmlbars';
+import { render, settled } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+
+import { eventListeners } from 'ember-lifecycle-utils/modifier';
 // import to from '@ember/component/template-only';
+import { modifier } from 'ember-modifier';
 
-import {modifier} from 'ember-modifier';
-import {eventListeners} from 'ember-lifecycle-utils/modifier';
-import {setupRenderingTest} from 'ember-qunit';
-
-const noop = () => {}
+const noop = () => {};
 
 module('Modifier', function (hooks) {
   setupRenderingTest(hooks);
@@ -20,12 +20,9 @@ module('Modifier', function (hooks) {
           element.addEventListener = (event: string) => assert.step(`add: ${event}`);
           element.removeEventListener = (event: string) => assert.step(`remove: ${event}`);
 
-          return eventListeners(element,
-            ['click', noop],
-            ['mouseenter', noop],
-          )
-        })
-      })
+          return eventListeners(element, ['click', noop], ['mouseenter', noop]);
+        }),
+      });
 
       await render(hbs`
         {{#if this.showComponent}}
@@ -33,17 +30,14 @@ module('Modifier', function (hooks) {
         {{/if}}
       `);
 
-      this.setProperties({showComponent: false});
+      this.setProperties({ showComponent: false });
       await settled();
 
       assert.verifySteps(['add: click', 'add: mouseenter', 'remove: click', 'remove: mouseenter']);
     });
 
     test('it works with shorthand', async function (assert) {
-      let events = eventListeners(
-        ['click', noop],
-        ['mouseenter', noop],
-      );
+      let events = eventListeners(['click', noop], ['mouseenter', noop]);
 
       this.setProperties({
         showComponent: true,
@@ -52,8 +46,8 @@ module('Modifier', function (hooks) {
           element.removeEventListener = (event: string) => assert.step(`remove: ${event}`);
 
           return events(element);
-        })
-      })
+        }),
+      });
 
       await render(hbs`
         {{#if this.showComponent}}
@@ -61,7 +55,7 @@ module('Modifier', function (hooks) {
         {{/if}}
       `);
 
-      this.setProperties({showComponent: false});
+      this.setProperties({ showComponent: false });
       await settled();
 
       assert.verifySteps(['add: click', 'add: mouseenter', 'remove: click', 'remove: mouseenter']);
