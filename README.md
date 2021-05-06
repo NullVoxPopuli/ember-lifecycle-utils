@@ -34,10 +34,10 @@ This can be used to help make even more concise helpers, like:
 ```js
 function useWindowEvent(context, eventName, handler) {
   withCleanup(context, () => {
-    window.addEventListener(eventName, lick', this.handleClick);
+    window.addEventListener(eventName, 'click', this.handleClick);
 
     return () => {
-      window.removeEventListener(eventName, lick', this.handleClick);
+      window.removeEventListener(eventName, 'click', this.handleClick);
     }
   });
 }
@@ -67,7 +67,7 @@ export default class Hello extends Component {
   registerListeners = modifier((element) => {
     return eventListeners(element.parentElement,
       ['click', this.onClick],
-      ['moustenter', this.onHover],
+      ['mouseenter', this.onHover],
     );
   });
 
