@@ -5,9 +5,9 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "https://github.com/NullVoxPopuli/ember-lifecycle-utils",
   "license": "MIT",
-  "author": "",
+  "author": "NullVoxPopuli",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -28,18 +28,19 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "ember-cli-babel": "^7.26.3",
+    "ember-cli-babel": "^7.26.5",
     "ember-cli-htmlbars": "^5.7.1",
     "ember-cli-typescript": "^4.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.2.5",
-    "@embroider/test-setup": "^0.37.0",
+    "@embroider/test-setup": "^0.40.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@nullvoxpopuli/eslint-configs": "^1.2.5",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@types/ember-qunit": "^3.4.13",
@@ -64,7 +65,6 @@
     "@types/htmlbars-inline-precompile": "^1.0.1",
     "@types/qunit": "^2.11.1",
     "@types/rsvp": "^4.0.3",
-    "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^1.11.2",
     "ember-cli": "~3.26.1",
@@ -76,6 +76,7 @@
     "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^2.1.2",
     "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-modifier": "^2.1.1",
     "ember-page-title": "^6.2.1",
     "ember-qunit": "^5.1.4",
     "ember-resolver": "^8.0.2",
@@ -84,17 +85,13 @@
     "ember-template-lint": "^3.2.0",
     "ember-try": "^1.4.0",
     "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-ember": "^10.3.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.2.1",
     "qunit": "^2.14.1",
     "qunit-dom": "^1.6.0",
     "semantic-release": "^17.3.7",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.2"
   },
   "release": {
     "branches": [
@@ -111,7 +108,7 @@
     ]
   },
   "volta": {
-    "node": "12.20.2",
+    "node": "14.16.1",
     "yarn": "1.22.10"
   },
   "engines": {

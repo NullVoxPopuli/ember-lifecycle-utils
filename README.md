@@ -1,38 +1,97 @@
-ember-lifecycle-utils
-==============================================================================
+# ember-lifecycle-utils
 
-[Short description of the addon.]
+Utils to reduce boilerplate when working with lifecycles
 
-
-Compatibility
-------------------------------------------------------------------------------
-
-* Ember.js v3.16 or above
-* Ember CLI v2.13 or above
-* Node.js v10 or above
-
-
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install ember-lifecycle-utils
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
-[Longer description of how to use the addon in apps.]
+### Vanilla Classes and Destroyables
+
+```js
+import { withCleanup } from 'ember-lifecycle-utils';
+
+class Hello {
+  constructor() {
+    withCleanup(this, () => {
+      window.addEventListener('click', this.handleClick);
+
+      return () => {
+        window.removeEventListener('click', this.handleClick);
+      }
+    });
+  }
+}
+```
+
+This can be used to help make even more concise helpers, like:
+
+```js
+function useWindowEvent(context, eventName, handler) {
+  withCleanup(context, () => {
+    window.addEventListener(eventName, lick', this.handleClick);
+
+    return () => {
+      window.removeEventListener(eventName, lick', this.handleClick);
+    }
+  });
+}
+```
+
+So now the above example would be:
+
+```js
+class Hello {
+  constructor() {
+    useWindowEvent(this, 'click', this.handleClick);
+    useWindowEvent(this, 'mouseenter', this.handleClick);
+  }
+}
+```
 
 
-Contributing
-------------------------------------------------------------------------------
+
+### Modifiers
+
+
+```js
+import { eventListeners } from 'ember-lifecycle-utils/modifier';
+
+
+export default class Hello extends Component {
+  registerListeners = modifier((element) => {
+    return eventListeners(element.parentElement,
+      ['click', this.onClick],
+      ['moustenter', this.onHover],
+    );
+  });
+
+  // or shorthand
+  registerListeners = modifier(eventListeners(
+    ['click', this.onClick],
+    ['mouseenter', this.onHover],
+  ));
+
+
+  // ...
+}
+```
+```hbs
+<button {{this.registerListeners}}>click me</button>
+```
+
+
+
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
