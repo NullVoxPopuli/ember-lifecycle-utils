@@ -1,6 +1,6 @@
 {
   "name": "ember-lifecycle-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "helper utils for lifecycle related things",
   "keywords": [
     "ember-addon"
