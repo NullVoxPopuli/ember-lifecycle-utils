@@ -1,5 +1,8 @@
 # ember-lifecycle-utils
 
+[![npm version](https://badge.fury.io/js/ember-lifecycle-utils.svg)](https://badge.fury.io/js/ember-lifecycle-utils)
+[![CI](https://github.com/NullVoxPopuli/ember-lifecycle-utils/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/NullVoxPopuli/ember-lifecycle-utils/actions/workflows/ci.yml)
+
 Utils to reduce boilerplate when working with lifecycles
 
 ## Installation
