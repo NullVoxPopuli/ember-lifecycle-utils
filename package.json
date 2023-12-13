@@ -30,7 +30,7 @@
   "dependencies": {
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^5.7.2",
-    "ember-cli-typescript": "^4.2.1"
+    "ember-cli-typescript": "^5.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
